@@ -1,0 +1,49 @@
+\documentclass[9pt,a5paper,twoside,openany]{extarticle}
+\usepackage[a5paper,inner=11.5mm,outer=11.5mm,top=13mm,bottom=13mm,headsep=4mm,footskip=5.5mm]{geometry}
+\usepackage{fontspec}
+\usepackage[czech,english]{babel}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{needspace}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage[hidelinks,breaklinks=true]{hyperref}
+\usepackage{xurl}
+\graphicspath{{../build/qr/}{../assets/}}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Noto Serif}
+\newfontfamily\displayfont{Noto Serif Display}
+\setsansfont{Liberation Sans}
+\definecolor{wine}{HTML}{752F39}
+\definecolor{ink}{HTML}{211F1D}
+\definecolor{muted}{HTML}{635C54}
+\color{ink}
+\setlength\parindent{0pt}
+\setlength\parskip{3.3pt}
+\setlength\emergencystretch{1.7em}
+% Keep at least two lines of a paragraph on either side of a page break.
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\fancyhf{}
+\fancyhead[LE,RO]{\sffamily\fontsize{6.7}{7.8}\selectfont\color{muted}ČAJ U MEFISTA 4}
+\fancyfoot[LE,RO]{\sffamily\fontsize{7}{9}\selectfont\color{wine}\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\pagestyle{fancy}
+\newcommand{\divider}{\vspace{1mm}\par{\color{wine}\rule{13mm}{0.45pt}}\vspace{1.4mm}\par}
+\newcommand{\talk}[4]{%
+\par\Needspace{31mm}% heading+byline+some paragraph must stay together
+{\sffamily\fontsize{7.0}{8}\selectfont\color{wine}\textbf{#1}}\par\nobreak
+{\displayfont\RaggedRight\fontsize{11.3}{12.1}\selectfont\bfseries #2\par}\nobreak
+{\fontsize{9.2}{10.0}\selectfont\itshape\color{wine}#3\par}\nobreak
+\vspace{1mm}\nobreak
+{\fontsize{9.1}{11.0}\selectfont\justifying #4\par}\vspace{3mm}\divider
+}
+\newcommand{\progentry}[3]{%
+\par\noindent{\RaggedRight\sffamily\fontsize{6.15}{7.45}\selectfont\color{wine}\textbf{#1}}\hspace{1mm}%
+{\RaggedRight\fontsize{7.35}{8.65}\selectfont #2\par}\vspace{1.2pt}}
+\newcommand{\daytitle}[1]{\par\vspace{3.1pt}{\sffamily\fontsize{8.0}{9.2}\selectfont\bfseries\color{wine}#1}\par\vspace{1.6pt}}
+\newcommand{\contact}[4]{\Needspace{25mm}{\displayfont\fontsize{12}{13}\selectfont\bfseries #1\par}{\fontsize{9.1}{11}\selectfont #2\par}\vspace{1.2mm}{\fontsize{9.1}{11}\selectfont WhatsApp: #3\par}\vspace{1mm}{\fontsize{7.7}{9.5}\selectfont #4\par}\vspace{4mm}}

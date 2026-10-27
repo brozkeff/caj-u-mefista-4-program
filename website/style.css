@@ -1,0 +1,31 @@
+:root { color-scheme: light; --ink: #282321; --wine: #752f39; --paper: #f7f3ed; --line: #ded4ca; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Georgia, serif; line-height: 1.5; }
+.wrap { width: min(100% - 2.5rem, 960px); margin: auto; }
+.hero { background: #fff; border-bottom: 1px solid var(--line); }
+.hero-inner { padding: 2rem 0 2.5rem; }
+.hero img { display: block; width: min(100%, 370px); height: auto; }
+.eyebrow { font: 700 .72rem/1.4 system-ui, sans-serif; letter-spacing: .15em; color: var(--wine); margin: 1.8rem 0 .3rem; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: clamp(2.7rem, 7vw, 5rem); line-height: 1; margin-bottom: .8rem; }
+h1 span { color: var(--wine); font-weight: normal; }
+.intro { margin-bottom: 0; }
+.language { display: flex; gap: .5rem; margin: 2rem 0; }
+button, .links a { font: 600 .9rem system-ui, sans-serif; border: 1px solid var(--wine); border-radius: 3px; padding: .65rem 1rem; background: transparent; color: var(--wine); cursor: pointer; text-decoration: none; }
+button[aria-pressed=true], .links a:first-child { background: var(--wine); color: white; }
+button:focus-visible, a:focus-visible { outline: 3px solid #bc893b; outline-offset: 3px; }
+.day { margin: 2.5rem 0; }
+.day h2 { font-size: 1.8rem; border-bottom: 2px solid var(--wine); padding-bottom: .6rem; }
+.event { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.event time { color: var(--wine); font: 700 1rem system-ui, sans-serif; }
+.event h3 { font-size: 1.17rem; margin-bottom: .2rem; }
+.event p { color: #615750; margin-bottom: .2rem; }
+.event details { margin-top: .5rem; }
+.event summary { cursor: pointer; color: var(--wine); }
+.event .abstract { white-space: pre-line; color: var(--ink); max-width: 70ch; margin-top: .7rem; }
+.apps { border-top: 1px solid var(--line); padding: 1rem 0 2rem; }
+.links { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0; }
+.note { font-size: .9rem; color: #615750; }
+footer { border-top: 1px solid var(--line); padding: 1.5rem 0 3rem; }
+a { color: var(--wine); }
+@media (max-width: 480px) { .event { grid-template-columns: 3.8rem 1fr; gap: .5rem; } }

@@ -1,0 +1,26 @@
+#!/bin/sh
+# Do not publish the private development history through any ref.
+if ! git show-ref --verify --quiet refs/heads/master; then
+    printf '%s\n' 'Push blocked: local master is missing; cannot check development history.' >&2
+    exit 1
+fi
+while read -r local_ref local_oid remote_ref remote_oid; do
+    case "$local_oid" in
+        0000000000000000000000000000000000000000) continue ;;
+    esac
+    if ! git cat-file -e "$local_oid^{commit}" 2>/dev/null; then
+        printf '%s\n' "Push blocked: cannot inspect $local_ref." >&2
+        exit 1
+    fi
+    if git merge-base "$local_oid^{commit}" refs/heads/master >/dev/null 2>&1; then
+        printf '%s\n' "Push blocked: $local_ref shares history with master." >&2
+        printf '%s\n' 'Publish only an audited, independently squashed production history.' >&2
+        exit 1
+    else
+        status=$?
+        if [ "$status" -ne 1 ]; then
+            printf '%s\n' "Push blocked: unable to compare $local_ref with master." >&2
+            exit 1
+        fi
+    fi
+done

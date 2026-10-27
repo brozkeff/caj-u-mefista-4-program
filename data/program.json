@@ -1,0 +1,658 @@
+{
+  "version": "4.0",
+  "timezone": "Europe/Prague",
+  "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27). This snapshot takes priority over later or cached website versions where they disagree; English titles from /program-1/ or translated when absent.",
+  "urls": {
+    "cz": "https://www.caj-u-mefista.cz/program/",
+    "en": "https://www.caj-u-mefista.cz/program-1/"
+  },
+  "venue": "Mahenův památník, Mahenova 8, Brno, Czechia",
+  "events": [
+    {
+      "id": "2026-10-29-19:00-brnenske-okultni-pivo-vinoteka-bukov",
+      "date": "2026-10-29",
+      "start": "19:00",
+      "kind": "social",
+      "title_cz": "Brněnské okultní pivo – Vinotéka Bukovský, Úvoz 4",
+      "title_en": "Brno Occult Beer – Vinotéka Bukovský, Úvoz 4",
+      "persons": [],
+      "moderator": null,
+      "room": "Vinotéka Bukovský",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs",
+        "sk",
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-30-12:00-prohlidka-okultnich-mist-brna-rezerv",
+      "date": "2026-10-30",
+      "start": "12:00",
+      "kind": "activity",
+      "title_cz": "Prohlídka okultních míst Brna (rezervace)",
+      "title_en": "Tour of Brno’s occult sites (reservation required)",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs",
+        "sk",
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-30-exhibitions-practice",
+      "date": "2026-10-30",
+      "start": null,
+      "kind": "exhibition",
+      "title_cz": "Výstavy praxe: J. Krása, Z. Antares, P. Langer",
+      "title_en": "Practice exhibitions: J. Krása, Z. Antares, P. Langer",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-30-exhibitions-art-selected",
+      "date": "2026-10-30",
+      "start": null,
+      "kind": "exhibition",
+      "title_cz": "Výstavy umění: L. Jirková Táborská, S. Chaitow",
+      "title_en": "Art exhibitions: L. Jirková Táborská, S. Chaitow",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-30-exhibitions-art-cycles",
+      "date": "2026-10-30",
+      "start": null,
+      "kind": "exhibition",
+      "title_cz": "Výstavy umění: K. Sedlo, T. Jobová (kurátor L. F. Peluněk)",
+      "title_en": "Art exhibitions: K. Sedlo, T. Jobová (curator L. F. Peluněk)",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-30-16:00-vernisaz-vystav",
+      "date": "2026-10-30",
+      "start": "16:00",
+      "kind": "activity",
+      "title_cz": "Vernisáž výstav",
+      "title_en": "Opening of the exhibitions",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs",
+        "sk",
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-30-16:30-prakticka-magie-ve-21-stoleti-ritual",
+      "date": "2026-10-30",
+      "start": "16:30",
+      "kind": "panel",
+      "title_cz": "Praktická magie ve 21. století? – Rituál, zkušenost a magické vnímání světa",
+      "title_en": "Practical Magic in the 21st Century? – Ritual, Experience and the Magical Perception of the World",
+      "persons": [
+        "Lenka Jelena Příplatová",
+        "Olga Čejková",
+        "Zuzana Antares",
+        "Matouš Mokrý"
+      ],
+      "moderator": "Petr Soukup",
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs",
+        "sk"
+      ]
+    },
+    {
+      "id": "2026-10-30-18:00-slavnostni-zahajeni-predstaveni-orga",
+      "date": "2026-10-30",
+      "start": "18:00",
+      "kind": "ceremony",
+      "title_cz": "Slavnostní zahájení, představení organizátorů a zdravice",
+      "title_en": "Official opening, introduction of organizers and greetings",
+      "persons": [
+        "Radoslav Ragač"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs",
+        "sk",
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-30-19:00-zidovska-magie-a-mystika-v-prostoru-",
+      "date": "2026-10-30",
+      "start": "19:00",
+      "kind": "lecture",
+      "title_cz": "Židovská magie a mystika v prostoru Československa",
+      "title_en": "Jewish Magic and Mysticism in Czechoslovakia",
+      "persons": [
+        "Jan Ševčík"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs",
+        "sk"
+      ]
+    },
+    {
+      "id": "2026-10-30-20:00-magicke-divadlo",
+      "date": "2026-10-30",
+      "start": "20:00",
+      "kind": "performance",
+      "title_cz": "Magické divadlo",
+      "title_en": "Magical Theatre",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "sk",
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-30-20:30-seznamovaci-vecer-s-rautem-a-kytarov",
+      "date": "2026-10-30",
+      "start": "20:30",
+      "kind": "social",
+      "title_cz": "Seznamovací večer s rautem a kytarovkou",
+      "title_en": "Social gathering with buffet and guitar night",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-31-08:30-cajovy-obrad",
+      "date": "2026-10-31",
+      "start": "08:30",
+      "kind": "activity",
+      "title_cz": "Čajový obřad",
+      "title_en": "Tea ceremony",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-31-09:00-synkretizmus-v-magickej-teorii-a-pra",
+      "date": "2026-10-31",
+      "start": "09:00",
+      "kind": "panel",
+      "title_cz": "Synkretizmus v magickej teórii a praxi",
+      "title_en": "Syncretism in Magical Theory and Practice",
+      "persons": [
+        "Martin Jiroušek",
+        "Sarkyr",
+        "Denis Cevan"
+      ],
+      "moderator": "Petr Soukup",
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs",
+        "sk"
+      ]
+    },
+    {
+      "id": "2026-10-31-09:45-veda-vira-povera-vecny-svar-ruznych-",
+      "date": "2026-10-31",
+      "start": "09:45",
+      "kind": "lecture",
+      "title_cz": "Věda, víra, pověra – věčný svár různých výkladů světa",
+      "title_en": "Science, Faith and Superstition – The Eternal Conflict Between Different Interpretations of the World",
+      "persons": [
+        "Olga Čejková"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs"
+      ]
+    },
+    {
+      "id": "2026-10-31-10:30-josef-simanek-polozapomenuty-basnik-",
+      "date": "2026-10-31",
+      "start": "10:30",
+      "kind": "lecture",
+      "title_cz": "Josef Šimánek – polozapomenutý básník nebo zasvěcenec mysterií?",
+      "title_en": "Josef Šimánek – A Half-Forgotten Poet or an Initiate of the Mysteries?",
+      "persons": [
+        "Ivo Chmelař"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs"
+      ]
+    },
+    {
+      "id": "2026-10-31-11:15-comparative-angelology-as-seen-in-th",
+      "date": "2026-10-31",
+      "start": "11:15",
+      "kind": "lecture",
+      "title_cz": "Comparative Angelology as Seen In the Angels of the Week",
+      "title_en": "Comparative Angelology as Seen In the Angels of the Week",
+      "persons": [
+        "John Meek"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-31-12:00-spolecny-obed",
+      "date": "2026-10-31",
+      "start": "12:00",
+      "kind": "break",
+      "title_cz": "Společný oběd",
+      "title_en": "Lunch",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-31-13:45-fux-karachovic-a-felix-filyo-kaligra",
+      "date": "2026-10-31",
+      "start": "13:45",
+      "kind": "performance",
+      "title_cz": "Fux Karachovič a Felix Filyó – kaligrafická a tetovací performance",
+      "title_en": "Fux Karachovič and Felix Filyó – calligraphy and tattoo performance",
+      "persons": [
+        "Fux Karachovič",
+        "Felix Filyó"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-31-14:00-john-dee-rane-novoveky-proteus",
+      "date": "2026-10-31",
+      "start": "14:00",
+      "kind": "lecture",
+      "title_cz": "John Dee, raně novověký Próteus",
+      "title_en": "John Dee, An Early Modern Proteus",
+      "persons": [
+        "György Szönyi"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-31-14:45-michal-kindernay-audiovizualni-perfo",
+      "date": "2026-10-31",
+      "start": "14:45",
+      "kind": "performance",
+      "title_cz": "Michal Kindernay – audiovizuální performance Rozlišení",
+      "title_en": "Michal Kindernay – audiovisual performance Rozlišení",
+      "persons": [
+        "Michal Kindernay"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-31-15:30-strukturovani-okultismu-agrippova-di",
+      "date": "2026-10-31",
+      "start": "15:30",
+      "kind": "lecture",
+      "title_cz": "Strukturování okultismu: Agrippova diskurzivní strategie a vývoj evropské magie",
+      "title_en": "Structuring the Occult: Agrippa’s Discursive Strategy and the Evolution of European Magic",
+      "persons": [
+        "Noel Putnik"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-31-16:15-iniciacni-paradigma-transformacnich-",
+      "date": "2026-10-31",
+      "start": "16:15",
+      "kind": "lecture",
+      "title_cz": "Iniciační paradigma transformačních mytologií",
+      "title_en": "The Initiatory Paradigm of Transformative Mythologies",
+      "persons": [
+        "Ike Baker"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-31-17:00-prestavka-bazar-knih-a-specialni-pro",
+      "date": "2026-10-31",
+      "start": "17:00",
+      "kind": "break",
+      "title_cz": "Přestávka, bazar knih a speciální program",
+      "title_en": "Break, book bazaar and special programme",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-31-18:00-alchemy-across-cultures-myth-practic",
+      "date": "2026-10-31",
+      "start": "18:00",
+      "kind": "panel",
+      "title_cz": "Alchemy Across Cultures: Myth, Practice and Transformation",
+      "title_en": "Alchemy Across Cultures: Myth, Practice and Transformation",
+      "persons": [
+        "Brian Cotnoir",
+        "Pablo V. Cazares"
+      ],
+      "moderator": "Jan Krása",
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "en"
+      ]
+    },
+    {
+      "id": "2026-10-31-19:30-ritual-v-blizkem-podzemi",
+      "date": "2026-10-31",
+      "start": "19:30",
+      "kind": "activity",
+      "title_cz": "Rituál v blízkém podzemí",
+      "title_en": "Ritual in the nearby underground",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-10-31-20:30-vecere-a-spolecna-zabava",
+      "date": "2026-10-31",
+      "start": "20:30",
+      "kind": "social",
+      "title_cz": "Večeře a společná zábava",
+      "title_en": "Dinner and social evening",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-11-01-08:30-cajovy-obrad",
+      "date": "2026-11-01",
+      "start": "08:30",
+      "kind": "activity",
+      "title_cz": "Čajový obřad",
+      "title_en": "Tea ceremony",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-11-01-09:00-mytologie-v-alchymii",
+      "date": "2026-11-01",
+      "start": "09:00",
+      "kind": "lecture",
+      "title_cz": "Mytologie v alchymii",
+      "title_en": "Mythology in Alchemy",
+      "persons": [
+        "David Sater"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "en"
+      ]
+    },
+    {
+      "id": "2026-11-01-09:45-od-rajek-k-obradni-magii-aneb-ritual",
+      "date": "2026-11-01",
+      "start": "09:45",
+      "kind": "lecture",
+      "title_cz": "Od rajek k obřadní magii aneb Rituál jako předmět zkoumání přírodních i společenských věd",
+      "title_en": "From Birds-of-Paradise to Ceremonial Magic: Ritual as an Object of Study in the Natural and Social Sciences",
+      "persons": [
+        "Lenka Jelena Příplatová"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs"
+      ]
+    },
+    {
+      "id": "2026-11-01-10:30-vizualni-gramatika-ochrany-runova-ma",
+      "date": "2026-11-01",
+      "start": "10:30",
+      "kind": "lecture",
+      "title_cz": "Vizuální gramatika ochrany: runová magie a zvířecí styl ve Skandinávii doby vikinské",
+      "title_en": "Visual Grammar of Protection: Runic Magic and the Animal Style in Viking Age Scandinavia",
+      "persons": [
+        "Olha Tynytska"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "en"
+      ]
+    },
+    {
+      "id": "2026-11-01-11:15-metafyzika-a-okultna-povaha-lasky",
+      "date": "2026-11-01",
+      "start": "11:15",
+      "kind": "lecture",
+      "title_cz": "Metafyzika a okultná povaha lásky",
+      "title_en": "The Metaphysics and Occult Nature of Love",
+      "persons": [
+        "Zuzana Hrašková"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "sk"
+      ]
+    },
+    {
+      "id": "2026-11-01-12:00-obed-a-okultni-swap",
+      "date": "2026-11-01",
+      "start": "12:00",
+      "kind": "break",
+      "title_cz": "Oběd a okultní swap",
+      "title_en": "Lunch and occult swap",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-11-01-14:00-pablo-v-cazares-hudebni-alchymistick",
+      "date": "2026-11-01",
+      "start": "14:00",
+      "kind": "performance",
+      "title_cz": "Pablo V. Cazares – hudební alchymistická performance",
+      "title_en": "Pablo V. Cazares – musical alchemy performance",
+      "persons": [
+        "Pablo V. Cazares"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    },
+    {
+      "id": "2026-11-01-14:15-gede-smrt-sex-a-diktatura",
+      "date": "2026-11-01",
+      "start": "14:15",
+      "kind": "lecture",
+      "title_cz": "GEDE: smrt, sex a diktatura",
+      "title_en": "GEDE: Death, Sex and Dictatorship",
+      "persons": [
+        "Veronika Šulcová"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs"
+      ]
+    },
+    {
+      "id": "2026-11-01-15:00-mytologizovane-zivoty-v-dejinach-oku",
+      "date": "2026-11-01",
+      "start": "15:00",
+      "kind": "lecture",
+      "title_cz": "Mytologizované životy v dějinách okultismu",
+      "title_en": "Mythologized Lives in the History of Occultism",
+      "persons": [
+        "Feđa Šlaki"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "en"
+      ]
+    },
+    {
+      "id": "2026-11-01-15:45-mezi-dvema-svety-zkusenost-magie-a-k",
+      "date": "2026-11-01",
+      "start": "15:45",
+      "kind": "lecture",
+      "title_cz": "Mezi dvěma světy? Zkušenost magie a každodenní život",
+      "title_en": "Between Two Worlds? The Experience of Magic and Everyday Life",
+      "persons": [
+        "Kateřina Horská"
+      ],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs"
+      ]
+    },
+    {
+      "id": "2026-11-01-16:30-okultni-imaginace-mezi-mytem-umenim-",
+      "date": "2026-11-01",
+      "start": "16:30",
+      "kind": "panel",
+      "title_cz": "Okultní imaginace: mezi mýtem, uměním a skutečností",
+      "title_en": "Occult Imagination: Between Myth, Art and Reality",
+      "persons": [
+        "Tereza Jobová",
+        "Petr Lisy",
+        "Jiří Schwarz",
+        "Pavel Langer",
+        "Vladimír Kiseljov"
+      ],
+      "moderator": "Ksenia Alexeeva",
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": [
+        "cs",
+        "sk"
+      ]
+    },
+    {
+      "id": "2026-11-01-17:30-slavnostni-zaver-konference",
+      "date": "2026-11-01",
+      "start": "17:30",
+      "kind": "ceremony",
+      "title_cz": "Slavnostní závěr konference",
+      "title_en": "Closing ceremony",
+      "persons": [],
+      "moderator": null,
+      "room": "Mahenův památník",
+      "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27)",
+      "notes": "",
+      "spoken_languages": []
+    }
+  ]
+}
