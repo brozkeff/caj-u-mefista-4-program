@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [4.0.4] - 2026-10-27
+
+### Changed
+
+- Updated the Czech and English logos in the booklets and website.
+- Linked the official conference programmes from the website and the interactive programme from this README.
+
 ## [4.0.3] - 2026-10-27
 
 ### Added

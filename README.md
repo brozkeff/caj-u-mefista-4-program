@@ -2,7 +2,7 @@
 
 Conference website: **[www.caj-u-mefista.cz](https://www.caj-u-mefista.cz/)**. Organized by ČESKO-SLOVENSKÁ VÝZKUMNÁ SPOLEČNOST - SÍŤ, z. s. (IČ 23462833).
 
-This project generates bilingual booklets, Pentabarf schedules and a static website. See [CHANGELOG.md](CHANGELOG.md) for release history.
+This project generates bilingual booklets, Pentabarf schedules and an [interactive programme website](https://brozkeff.github.io/caj-u-mefista-4-program/). See [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## Sources and rights
 

@@ -45,7 +45,7 @@ def main() -> None:
     archive = output / f'caj-u-mefista-4-{args.tag}.zip'
     files = [*sorted((ROOT / 'build' / 'pdf').glob('*.pdf')),
              *(ROOT / 'build' / 'site' / name for name in
-               ('index.html', 'style.css', 'schedule.js', 'logo-cz.jpg', 'schedule-cz.xml', 'schedule-en.xml')),
+               ('index.html', 'style.css', 'schedule.js', 'logo-cz.jpg', 'logo-en.jpg', 'schedule-cz.xml', 'schedule-en.xml')),
              *(ROOT / 'assets' / name for name in
                ('logo-cz.jpg', 'logo-en.jpg', 'program-qr-cz.svg', 'program-qr-en.svg', 'stream-qr.svg')),
              ROOT / 'README.md', ROOT / 'LICENSE']

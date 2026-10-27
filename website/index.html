@@ -10,7 +10,7 @@
 <body>
   <header class="hero">
     <div class="wrap hero-inner">
-      <a href="https://www.caj-u-mefista.cz/"><img src="logo-cz.jpg" alt="Čaj u Mefista 4"></a>
+      <a href="https://www.caj-u-mefista.cz/"><img id="conference-logo" src="logo-cz.jpg" alt="Čaj u Mefista 4"></a>
       <p class="eyebrow">BRNO · 29. 10. — 1. 11. 2026</p>
       <h1>Program <span>/ Schedule</span></h1>
       <p class="intro">Mahenův památník · <span id="timezone">Časy jsou uvedeny v časovém pásmu Praha (Europe/Prague).</span></p>
@@ -21,6 +21,7 @@
       <button type="button" data-language="cz" aria-pressed="true">Česky</button>
       <button type="button" data-language="en" aria-pressed="false">English</button>
     </nav>
+    <p><a id="official-program" href="https://www.caj-u-mefista.cz/program/">Oficiální program na webu konference ↗</a></p>
     <p id="status" role="status">Načítám program…</p>
     <div id="schedule"></div>
     <section class="apps" aria-labelledby="apps-heading">
@@ -33,7 +34,7 @@
         <a id="xml-link" href="schedule-cz.xml">XML · CZ ↓</a>
       </div>
       <p class="note">Skedz: <a href="https://github.com/ysorge/skedz">GitHub</a> · GNU AGPL-3.0</p>
-      <p class="note" id="notice">Nečasované výstavy v XML nejsou. Délky některých položek jsou orientační.</p>
+      <p class="note" id="notice">Výstavy jsou uvedeny bez času. Délky některých položek jsou orientační.</p>
     </section>
   </main>
   <footer class="wrap"><a href="https://www.caj-u-mefista.cz/">caj-u-mefista.cz ↗</a></footer>

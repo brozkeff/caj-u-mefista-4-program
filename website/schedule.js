@@ -1,7 +1,7 @@
 'use strict';
 const translations = {
-  cz: { timezone: 'Časy jsou uvedeny v časovém pásmu Praha (Europe/Prague).', loading: 'Načítám program…', error: 'Program se nepodařilo načíst. Zkuste to prosím později.', details: 'Anotace', apps: 'Program v mobilu', copy: 'Na Androidu můžete načíst XML do Giggity. Na iPhonu otevřete program ve Skedz; v Safari jej můžete přidat na plochu.', notice: 'Výstavy jsou uvedeny bez času. Délky některých položek jsou orientační.', locale: 'cs-CZ' },
-  en: { timezone: 'All times are in Prague time (Europe/Prague).', loading: 'Loading the schedule…', error: 'The schedule could not be loaded. Please try again later.', details: 'Abstract', apps: 'Schedule on your phone', copy: 'On Android, you can load the XML in Giggity. On iPhone, open the schedule in Skedz; you can add it to your Home Screen from Safari.', notice: 'Exhibitions are listed without a time. Some event durations are estimates.', locale: 'en-GB' }
+  cz: { official: 'Oficiální program na webu konference ↗', officialUrl: 'https://www.caj-u-mefista.cz/program/', logoAlt: 'Čaj u Mefista 4', timezone: 'Časy jsou uvedeny v časovém pásmu Praha (Europe/Prague).', loading: 'Načítám program…', error: 'Program se nepodařilo načíst. Zkuste to prosím později.', details: 'Anotace', apps: 'Program v mobilu', copy: 'Na Androidu můžete načíst XML do Giggity. Na iPhonu otevřete program ve Skedz; v Safari jej můžete přidat na plochu.', notice: 'Výstavy jsou uvedeny bez času. Délky některých položek jsou orientační.', locale: 'cs-CZ' },
+  en: { official: 'Official programme on the conference website ↗', officialUrl: 'https://www.caj-u-mefista.cz/program-1/', logoAlt: 'Tea at Mephisto’s 4', timezone: 'All times are in Prague time (Europe/Prague).', loading: 'Loading the schedule…', error: 'The schedule could not be loaded. Please try again later.', details: 'Abstract', apps: 'Schedule on your phone', copy: 'On Android, you can load the XML in Giggity. On iPhone, open the schedule in Skedz; you can add it to your Home Screen from Safari.', notice: 'Exhibitions are listed without a time. Some event durations are estimates.', locale: 'en-GB' }
 };
 let current = 0;
 async function show(language) {
@@ -9,6 +9,10 @@ async function show(language) {
   document.documentElement.lang = language === 'cz' ? 'cs' : 'en';
   document.querySelectorAll('[data-language]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
   for (const [id, text] of Object.entries({ timezone: t.timezone, 'apps-heading': t.apps, 'apps-copy': t.copy, notice: t.notice, status: t.loading })) document.getElementById(id).textContent = text;
+  const official = document.getElementById('official-program');
+  official.href = t.officialUrl; official.textContent = t.official;
+  const logo = document.getElementById('conference-logo');
+  logo.src = `logo-${language}.jpg`; logo.alt = t.logoAlt;
   const xmlLink = document.getElementById('xml-link');
   xmlLink.href = `schedule-${language}.xml`;
   xmlLink.textContent = `XML · ${language.toUpperCase()} ↓`;
