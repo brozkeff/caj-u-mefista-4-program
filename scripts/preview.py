@@ -1,4 +1,4 @@
-"""Regenerate and serve the local schedule website for browser review."""
+"""Regenerate and serve the schedule locally so reviewers can check it in a browser."""
 from __future__ import annotations
 
 import argparse
@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> None:
+    """Build the site and serve it on localhost until interrupted."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--port', type=int, default=8765, help='Local port (default: 8765)')
     args = parser.parse_args()

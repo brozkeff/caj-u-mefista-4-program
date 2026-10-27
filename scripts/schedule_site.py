@@ -1,6 +1,8 @@
-"""Assemble the static schedule website from the current XML exports."""
+"""Assemble the website from canonical exports so previews and deployment agree."""
 from pathlib import Path
 import shutil
+
+from config import LANGUAGES, SCHEDULE_PREFIX
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -11,7 +13,7 @@ def build_site() -> None:
     output.mkdir(parents=True, exist_ok=True)
     for name in ('index.html', 'style.css', 'schedule.js'):
         shutil.copy2(ROOT / 'website' / name, output / name)
-    for lang in ('cz', 'en'):
+    for lang in LANGUAGES:
         shutil.copy2(ROOT / 'assets' / f'logo-{lang}.jpg', output / f'logo-{lang}.jpg')
-        shutil.copy2(ROOT / 'schedule' / f'Caj_u_Mefista_4_pentabarf_{lang}.xml',
+        shutil.copy2(ROOT / 'schedule' / f'{SCHEDULE_PREFIX}_{lang}.xml',
                      output / f'schedule-{lang}.xml')

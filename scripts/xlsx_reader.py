@@ -1,7 +1,7 @@
-"""Read text cells from an XLSX worksheet using Python's standard library.
+"""Read reviewed workbook text without requiring Excel or third-party libraries.
 
-Handles shared strings, rich strings, inline strings and cached formula results.
-This module deliberately does not edit an XLSX or depend on Excel/LibreOffice.
+The original row numbers, Unicode and paragraph breaks are retained for accurate
+abstract generation; worksheets are selected by name, not their position.
 """
 
 from __future__ import annotations
@@ -41,7 +41,18 @@ class Worksheet:
 
 
 def _read_xml(archive: ZipFile, member: str) -> ET.Element:
-    """Load an XML member from an XLSX archive."""
+    """Load a required XML member from an XLSX archive.
+
+    Args:
+        archive: Open XLSX ZIP archive.
+        member: Archive member path.
+
+    Returns:
+        Parsed XML root.
+
+    Raises:
+        ValueError: If the member does not exist.
+    """
     try:
         return ET.fromstring(archive.read(member))
     except KeyError as exc:
@@ -49,7 +60,14 @@ def _read_xml(archive: ZipFile, member: str) -> ET.Element:
 
 
 def _shared_strings(archive: ZipFile) -> list[str]:
-    """Return the shared-string table, including concatenated rich text runs."""
+    """Read shared strings, concatenating rich text runs.
+
+    Args:
+        archive: Open XLSX ZIP archive.
+
+    Returns:
+        Strings in shared-table order, or an empty list if there is no table.
+    """
     if "xl/sharedStrings.xml" not in archive.namelist():
         return []
     root = _read_xml(archive, "xl/sharedStrings.xml")
@@ -60,19 +78,25 @@ def _shared_strings(archive: ZipFile) -> list[str]:
 
 
 def _resolve_sheet(archive: ZipFile, sheet_name: str) -> str:
-    """Resolve sheet names through workbook relations, not sheet order."""
+    """Resolve a sheet name through workbook relationships.
+
+    Args:
+        archive: Open XLSX ZIP archive.
+        sheet_name: Exact worksheet name.
+
+    Returns:
+        Safe archive path to the worksheet XML.
+
+    Raises:
+        ValueError: If the worksheet or relationship is missing or unsafe.
+    """
     workbook = _read_xml(archive, "xl/workbook.xml")
     relationships = _read_xml(archive, "xl/_rels/workbook.xml.rels")
-    rel_id: str | None = None
-    for sheet in workbook.findall("x:sheets/x:sheet", NS):
-        if sheet.attrib.get("name") == sheet_name:
-            rel_id = sheet.attrib.get(f"{{{OFFICE_REL_NS}}}id")
-            break
+    sheets = workbook.findall("x:sheets/x:sheet", NS)
+    sheet = next((item for item in sheets if item.attrib.get("name") == sheet_name), None)
+    rel_id = sheet.attrib.get(f"{{{OFFICE_REL_NS}}}id") if sheet is not None else None
     if rel_id is None:
-        available = ", ".join(
-            sheet.attrib.get("name", "")
-            for sheet in workbook.findall("x:sheets/x:sheet", NS)
-        )
+        available = ", ".join(item.attrib.get("name", "") for item in sheets)
         raise ValueError(f"Worksheet {sheet_name!r} not found; available: {available}")
     for rel in relationships.findall("p:Relationship", NS):
         if rel.attrib.get("Id") != rel_id:
@@ -89,6 +113,42 @@ def _resolve_sheet(archive: ZipFile, sheet_name: str) -> str:
             raise ValueError(f"Unexpected worksheet part: {member}")
         return member
     raise ValueError(f"No XLSX relationship found for worksheet {sheet_name!r}")
+
+
+def _cell_text(cell: ET.Element, shared: list[str], address: str) -> str:
+    """Decode a text, shared-string or cached-value cell.
+
+    Args:
+        cell: Worksheet cell element.
+        shared: Workbook shared-string table.
+        address: Cell reference used in error messages.
+
+    Returns:
+        Cell text with line endings normalized to newlines.
+
+    Raises:
+        ValueError: If a formula has no cached value or a shared index is invalid.
+    """
+    kind = cell.attrib.get("t", "n")
+    raw = cell.find("x:v", NS)
+    if kind == "inlineStr":
+        value = "".join(node.text or "" for node in cell.findall("x:is/.//x:t", NS))
+    elif raw is None:
+        if cell.find("x:f", NS) is not None:
+            raise ValueError(
+                f"Formula in {address} has no cached value; "
+                "recalculate/export the workbook before building"
+            )
+        value = ""
+    elif kind == "s":
+        index = int(raw.text or "-1")
+        try:
+            value = shared[index]
+        except IndexError as exc:
+            raise ValueError(f"Invalid shared string index in {address}") from exc
+    else:
+        value = raw.text or ""
+    return value.replace("\r\n", "\n").replace("\r", "\n")
 
 
 def read_worksheet(
@@ -132,30 +192,7 @@ def read_worksheet(
                         continue
                     if int(actual_row) != row_number:
                         raise ValueError(f"Inconsistent XLSX cell row: {cell.attrib!r}")
-                    kind = cell.attrib.get("t", "n")
-                    raw = cell.find("x:v", NS)
-                    if kind == "inlineStr":
-                        value = "".join(
-                            node.text or "" for node in cell.findall("x:is/.//x:t", NS)
-                        )
-                    elif raw is None:
-                        if cell.find("x:f", NS) is not None:
-                            raise ValueError(
-                                f"Formula in {column}{row_number} has no cached value; "
-                                "recalculate/export the workbook before building"
-                            )
-                        value = ""
-                    elif kind == "s":
-                        index = int(raw.text or "-1")
-                        try:
-                            value = shared[index]
-                        except IndexError as exc:
-                            raise ValueError(
-                                f"Invalid shared string index in {column}{row_number}"
-                            ) from exc
-                    else:
-                        value = raw.text or ""
-                    values[column] = value.replace("\r\n", "\n").replace("\r", "\n")
+                    values[column] = _cell_text(cell, shared, f"{column}{row_number}")
                 rows[row_number] = values
             return Worksheet(name=sheet_name, cells=rows)
     except (BadZipFile, OSError, ET.ParseError) as exc:

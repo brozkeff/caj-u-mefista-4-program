@@ -1,0 +1,27 @@
+{
+  "cover": {
+    "date": "29. 10. – 1. 11. 2026",
+    "venue": "Mahenův památník, Brno",
+    "title": {"cz": "Anotace přednášek", "en": "Lecture abstracts"}
+  },
+  "programme": {
+    "heading": {"cz": "Program", "en": "Programme"},
+    "column_break": {"date": "2026-10-31", "after": "12:00"},
+    "day_labels": {
+      "cz": {"2026-10-29": "ČTVRTEK 29. 10.", "2026-10-30": "PÁTEK 30. 10.", "2026-10-31": "SOBOTA 31. 10.", "2026-11-01": "NEDĚLE 1. 11."},
+      "en": {"2026-10-29": "THURSDAY 29 OCT", "2026-10-30": "FRIDAY 30 OCT", "2026-10-31": "SATURDAY 31 OCT", "2026-11-01": "SUNDAY 1 NOV"}
+    },
+    "guests": {"cz": "Hosté: ", "en": "Guests: "},
+    "chair": {"cz": "; moderuje ", "en": "; chair: "}
+  },
+  "contacts": {
+    "heading": {"cz": "Důležité kontakty", "en": "Key contacts"},
+    "url": {"cz": "https://www.caj-u-mefista.cz/organizacni-informace/", "en": "https://www.caj-u-mefista.cz/organizational-information/"},
+    "people": [
+      {"name": "Petr Soukup", "role": {"cz": "Marketingová komunikace, tiskový mluvčí", "en": "Marketing communications, press spokesperson"}, "phone": "+420 723 652 371", "facebook": "https://www.facebook.com/petr.soukupjunior"},
+      {"name": "Jan Ševčík", "role": {"cz": "Svolavatel konference, Mahenův památník", "en": "Conference convener, Mahen Memorial"}, "phone": "+420 737 669 717", "facebook": "https://www.facebook.com/KnihovnikBrnensky/"},
+      {"name": "Ondřej Varaďa", "role": {"cz": "Mezinárodní komunikace, hlavní tlumočník", "en": "International communications, chief interpreter"}, "phone": "+420 721 227 538", "facebook": "https://www.facebook.com/ondra.varada"}
+    ],
+    "order": {"cz": [0, 1, 2], "en": [2, 0, 1]}
+  }
+}

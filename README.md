@@ -7,7 +7,10 @@ This project generates bilingual booklets, Pentabarf schedules and an [interacti
 ## Sources and rights
 
 - `data/abstracts_review.xlsx`: reviewed author and abstract fields in `Přednášky tisk`; preserve the text as supplied.
-- `data/program.json`: authoritative timetable, titles and participants. See [PROVENANCE.md](PROVENANCE.md) for sources and a known website discrepancy.
+- `data/program.json`: authoritative timetable, titles, participants and Pentabarf conference metadata. See [PROVENANCE.md](PROVENANCE.md) for sources and a known website discrepancy.
+- `data/booklet.json`: bilingual cover, programme headings, column split and contact details.
+- `data/stream.json`: bilingual stream text and channel URL.
+- `scripts/config.py`: shared output names and language codes. Preserve the event GUID prefix to keep published event IDs stable.
 - `assets/`: supplied logos and programme QR codes, plus the stream QR code. If `data/stream.json` changes, regenerate `assets/stream-qr.svg` with `qrencode -t SVG` using the updated URL. Generated outputs are ignored by Git.
 
 Project-authored code, build scripts, website implementation, configuration, tests and documentation are licensed under [EUPL-1.2](LICENSE), unless stated otherwise. Copyright belongs to their respective contributors.
@@ -19,16 +22,17 @@ Conference content and third-party materials are **not** licensed under the EUPL
 On Debian or Ubuntu:
 
 ```bash
-sudo apt install python3 python3-venv texlive-xetex texlive-latex-extra \
+sudo apt install python3 python3-venv nodejs texlive-xetex texlive-latex-extra \
   texlive-lang-czechslovak fonts-noto-core fonts-noto-extra \
-  fonts-liberation poppler-utils inkscape
+  fonts-liberation poppler-utils inkscape zbar-tools
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 make build PYTHON=.venv/bin/python
 make verify PYTHON=.venv/bin/python
+make test PYTHON=.venv/bin/python
 ```
 
-Alternatively run `uv sync` and use `PYTHON='uv run python'`. The four PDFs go to `build/pdf/`; the preserved cloud-rendered files in `pdf/` are never overwritten. `make sources` skips PDF rendering; `make xml` regenerates schedules and the website. Before print release, follow [QA.md](QA.md), including a physical short-edge-duplex proof.
+Alternatively run `uv sync` and use `PYTHON='uv run python'`. Run `make build` before `make test`; the permanent tests check XML well-formedness and schedule structure, while regression checks compare generated publication text and schedules against the reviewed v4.0.4 baseline; update the fixture deliberately when the published content changes. The four PDFs go to `build/pdf/`; the preserved cloud-rendered files in `pdf/` are never overwritten. `make sources` skips PDF rendering; `make xml` regenerates schedules and the website. Before release, follow [QA.md](QA.md); a physical short-edge-duplex proof is optional.
 
 ## Update the programme
 
@@ -52,6 +56,6 @@ Prepare a clean `production` commit and an annotated tag on that exact commit; c
 python3 scripts/release.py v4.0.0
 ```
 
-The helper checks the clean checkout and tag, rebuilds and verifies, then creates a ZIP and SHA-256 file in `build/release/`. The ZIP contains the four PDFs, website and XML, logos, programme and stream QR SVGs, README, license and source commit identifier. Inspect them and complete [QA.md](QA.md). Once the tag is pushed and a GitHub release exists, run `python3 scripts/release.py v4.0.0 --upload` to upload both files with `gh`; existing assets are not overwritten.
+The helper checks the clean checkout and tag, rebuilds, verifies and runs the regression tests, then creates a ZIP and SHA-256 file in `build/release/`. The ZIP contains the four PDFs, website and XML, logos, programme and stream QR SVGs, README, license and source commit identifier. Inspect them and complete [QA.md](QA.md). Once the tag is pushed and a GitHub release exists, run `python3 scripts/release.py v4.0.0 --upload` to upload both files with `gh`; existing assets are not overwritten.
 
 For a later release, update a clean `production` checkout with the desired snapshot from `master` using `git diff --binary production master | git apply --index`, review the staged changes and make one commit. Tag that production commit; a tag on the development commit does not identify the squashed commit. Review and push deliberately; the helper does not create tags, branches or releases.

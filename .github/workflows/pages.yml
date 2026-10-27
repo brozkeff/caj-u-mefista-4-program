@@ -24,6 +24,8 @@ jobs:
           python-version: '3.13'
       - name: Generate schedules and website
         run: make xml
+      - name: Check generated XML
+        run: python -m unittest discover -s tests -p test_schedule_xml.py
       - name: Check schedule links
         run: node --test tests/schedule-links.cjs
       - name: Package Pages artifact

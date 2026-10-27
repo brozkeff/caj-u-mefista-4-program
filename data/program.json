@@ -1,4 +1,17 @@
 {
+  "conference": {
+    "title_cz": "Čaj u Mefista 4",
+    "title_en": "Tea at Mephisto’s 4",
+    "subtitle_cz": "Mezinárodní konference o výzkumu okultismu",
+    "subtitle_en": "International Conference on Research into Occultism",
+    "venue": "Mahenův památník",
+    "city": "Brno",
+    "start": "2026-10-29",
+    "end": "2026-11-01",
+    "days": 4,
+    "day_change": "06:00:00",
+    "timeslot_duration": "00:05:00"
+  },
   "version": "4.0",
   "timezone": "Europe/Prague",
   "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27). This snapshot takes priority over later or cached website versions where they disagree; English titles from /program-1/ or translated when absent.",

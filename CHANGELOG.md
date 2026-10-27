@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [4.1.0] - 2026-10-28
+
+### Changed
+
+- Simplified the publication scripts and moved conference and booklet presentation details into editable data files.
+- Added regression checks for the reviewed v4.0.4 schedules and booklet content, permanent XML structure checks, and automated QR decoding from the PDFs.
+- Made physical print proofs optional in the release guidance.
+- Centralized publication filenames and stable event identifiers.
+
 ## [4.0.4] - 2026-10-27
 
 ### Changed
