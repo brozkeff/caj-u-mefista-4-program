@@ -47,7 +47,7 @@ def main() -> None:
              *(ROOT / 'build' / 'site' / name for name in
                ('index.html', 'style.css', 'schedule.js', 'logo-cz.jpg', 'schedule-cz.xml', 'schedule-en.xml')),
              *(ROOT / 'assets' / name for name in
-               ('logo-cz.jpg', 'logo-en.jpg', 'program-qr-cz.svg', 'program-qr-en.svg')),
+               ('logo-cz.jpg', 'logo-en.jpg', 'program-qr-cz.svg', 'program-qr-en.svg', 'stream-qr.svg')),
              ROOT / 'README.md', ROOT / 'LICENSE']
     expected = {'Caj_u_Mefista_4_A5_CZ.pdf', 'Caj_u_Mefista_4_A5_EN.pdf',
                 'Caj_u_Mefista_4_A5_tete_beche_reader.pdf', 'Caj_u_Mefista_4_A4_imposed_duplex.pdf'}

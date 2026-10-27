@@ -34,6 +34,9 @@ def verify() -> None:
             assert sum(body in p.read_text(encoding="utf-8") for p in files) == 1, lecture.author
         tree = ET.parse(ROOT / "schedule" / f"Caj_u_Mefista_4_pentabarf_{language}.xml")
         assert (ROOT / "build" / "site" / f"schedule-{language}.xml").read_bytes() == (ROOT / "schedule" / f"Caj_u_Mefista_4_pentabarf_{language}.xml").read_bytes(), language
+        untimed = tree.findall(".//day/untimed_events/event")
+        expected_untimed = [e for e in meta["events"] if e["start"] is None]
+        assert {e.text for e in untimed} == {e[f"title_{language}"] for e in expected_untimed}
         events = tree.findall(".//day/room/event")
         assert len(events) == sum(e["start"] is not None for e in meta["events"]), len(events)
         assert len([e for e in events if e.findtext("type") == "lecture"]) == 14
@@ -59,6 +62,10 @@ def verify() -> None:
         assert "O TÉTO EDICI" not in text and "Pro anglické znění otočte" not in text
         assert "Důležité kontakty" in text if lang == "cz" else "Key contacts" in text
         assert "WhatsApp" in text
+        stream = json.loads((ROOT / "data" / "stream.json").read_text(encoding="utf-8"))
+        assert stream[lang]["heading"] in pdf.pages[-2].extract_text()
+        assert stream["url"] in pdf.pages[-2].extract_text()
+        assert ("Důležité kontakty" if lang == "cz" else "Key contacts") in pdf.pages[-1].extract_text()
     both = PdfReader(ROOT / "build" / "pdf" / "Caj_u_Mefista_4_A5_tete_beche_reader.pdf")
     imposed = PdfReader(ROOT / "build" / "pdf" / "Caj_u_Mefista_4_A4_imposed_duplex.pdf")
     assert len(both.pages) == 2 * len(c.pages)

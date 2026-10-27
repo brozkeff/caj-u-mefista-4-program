@@ -1,7 +1,7 @@
 'use strict';
 const translations = {
-  cz: { timezone: 'Časy jsou uvedeny v časovém pásmu Praha (Europe/Prague).', loading: 'Načítám program…', error: 'Program se nepodařilo načíst. Zkuste to prosím později.', details: 'Anotace', apps: 'Program v mobilu', copy: 'Na Androidu můžete načíst XML do Giggity. Na iPhonu otevřete program ve Skedz; v Safari jej můžete přidat na plochu.', notice: 'Nečasované výstavy v XML nejsou. Délky některých položek jsou orientační.', locale: 'cs-CZ' },
-  en: { timezone: 'All times are in Prague time (Europe/Prague).', loading: 'Loading the schedule…', error: 'The schedule could not be loaded. Please try again later.', details: 'Abstract', apps: 'Schedule on your phone', copy: 'On Android, you can load the XML in Giggity. On iPhone, open the schedule in Skedz; you can add it to your Home Screen from Safari.', notice: 'Untimed exhibitions are not included in the XML. Some event durations are estimates.', locale: 'en-GB' }
+  cz: { timezone: 'Časy jsou uvedeny v časovém pásmu Praha (Europe/Prague).', loading: 'Načítám program…', error: 'Program se nepodařilo načíst. Zkuste to prosím později.', details: 'Anotace', apps: 'Program v mobilu', copy: 'Na Androidu můžete načíst XML do Giggity. Na iPhonu otevřete program ve Skedz; v Safari jej můžete přidat na plochu.', notice: 'Výstavy jsou uvedeny bez času. Délky některých položek jsou orientační.', locale: 'cs-CZ' },
+  en: { timezone: 'All times are in Prague time (Europe/Prague).', loading: 'Loading the schedule…', error: 'The schedule could not be loaded. Please try again later.', details: 'Abstract', apps: 'Schedule on your phone', copy: 'On Android, you can load the XML in Giggity. On iPhone, open the schedule in Skedz; you can add it to your Home Screen from Safari.', notice: 'Exhibitions are listed without a time. Some event durations are estimates.', locale: 'en-GB' }
 };
 let current = 0;
 async function show(language) {
@@ -30,6 +30,12 @@ async function show(language) {
       // A UTC date here formats the date label only; event times remain the XML's Prague wall times.
       heading.textContent = new Intl.DateTimeFormat(t.locale, { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }).format(new Date(`${day.getAttribute('date')}T12:00:00Z`));
       section.append(heading);
+      for (const exhibition of day.querySelectorAll('untimed_events > event')) {
+        const row = document.createElement('article'); row.className = 'event';
+        const time = document.createElement('span'); time.textContent = '—';
+        const title = document.createElement('h3'); title.textContent = exhibition.textContent;
+        row.append(time, title); section.append(row);
+      }
       const events = [...day.querySelectorAll('room > event')].sort((a, b) => a.querySelector('start').textContent.localeCompare(b.querySelector('start').textContent));
       for (const event of events) {
         const row = document.createElement('article'); row.className = 'event';

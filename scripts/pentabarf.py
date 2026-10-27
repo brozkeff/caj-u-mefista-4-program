@@ -53,12 +53,16 @@ def create(program:dict, lectures:list[Lecture], lang:str)->bytes:
     for k,v in meta.items(): ET.SubElement(conference,k).text=v
     days=defaultdict(list)
     for e in program['events']:
-        if e['start']: days[e['date']].append(e)
+        days[e['date']].append(e)
     for i,day in enumerate(sorted(days),1):
         day_element=ET.SubElement(root,'day',{'index':str(i),'date':day})
-        for room_name in sorted(set(e['room'] for e in days[day])):
+        untimed = ET.SubElement(day_element, 'untimed_events')
+        for e in (item for item in days[day] if not item['start']):
+            ET.SubElement(untimed, 'event', {'guid': f"caj-u-mefista-4-{e['id']}"}).text = e[f'title_{lang}']
+        timed = [e for e in days[day] if e['start']]
+        for room_name in sorted(set(e['room'] for e in timed)):
             room=ET.SubElement(day_element,'room',{'name':room_name})
-            for e in sorted([item for item in days[day] if item['room']==room_name],key=lambda o:o['start']):
+            for e in sorted([item for item in timed if item['room']==room_name],key=lambda o:o['start']):
                 event=ET.SubElement(room,'event',{'id':str(1000+program['events'].index(e)),'guid':f"caj-u-mefista-4-{e['id']}"})
                 elements={'start':e['start'],'duration':f"{duration_minutes(e,days[day])//60:02d}:{duration_minutes(e,days[day])%60:02d}",'room':room_name,'slug':e['id'],'title':e[f'title_{lang}'],'subtitle':'','track':e['kind'].capitalize(),'type':e['kind'],'language':', '.join(e.get('spoken_languages', [])) or 'und'}
                 if e['id'] in lecture_by_id:

@@ -8,7 +8,7 @@ This project generates bilingual booklets, Pentabarf schedules and a static webs
 
 - `data/abstracts_review.xlsx`: reviewed author and abstract fields in `Přednášky tisk`; preserve the text as supplied.
 - `data/program.json`: authoritative timetable, titles and participants. See [PROVENANCE.md](PROVENANCE.md) for sources and a known website discrepancy.
-- `assets/`: supplied logos and programme QR codes. Generated outputs are ignored by Git.
+- `assets/`: supplied logos and programme QR codes, plus the stream QR code. If `data/stream.json` changes, regenerate `assets/stream-qr.svg` with `qrencode -t SVG` using the updated URL. Generated outputs are ignored by Git.
 
 Project-authored code, build scripts, website implementation, configuration, tests and documentation are licensed under [EUPL-1.2](LICENSE), unless stated otherwise. Copyright belongs to their respective contributors.
 
@@ -32,7 +32,7 @@ Alternatively run `uv sync` and use `PYTHON='uv run python'`. The four PDFs go t
 
 ## Update the programme
 
-Edit the timetable in `data/program.json`; change both language titles when appropriate and retain published event IDs. Add a lecture only when the reviewed workbook has a matching author and abstracts. The workbook reader selects columns by header and ignores unrelated fields. Untimed exhibitions are omitted from Pentabarf and some durations are estimates; set `duration_minutes` to override them.
+Edit the timetable in `data/program.json`; change both language titles when appropriate and retain published event IDs. Add a lecture only when the reviewed workbook has a matching author and abstracts. The workbook reader selects columns by header and ignores unrelated fields. Untimed exhibitions appear in an XML extension and on the website; Pentabarf apps may ignore them. Some durations are estimates; set `duration_minutes` to override them.
 
 ## Website
 
@@ -52,6 +52,6 @@ Prepare a clean `production` commit and an annotated tag on that exact commit; c
 python3 scripts/release.py v4.0.0
 ```
 
-The helper checks the clean checkout and tag, rebuilds and verifies, then creates a ZIP and SHA-256 file in `build/release/`. The ZIP contains the four PDFs, website and XML, logos, QR SVGs, README, license and source commit identifier. Inspect them and complete [QA.md](QA.md). Once the tag is pushed and a GitHub release exists, run `python3 scripts/release.py v4.0.0 --upload` to upload both files with `gh`; existing assets are not overwritten.
+The helper checks the clean checkout and tag, rebuilds and verifies, then creates a ZIP and SHA-256 file in `build/release/`. The ZIP contains the four PDFs, website and XML, logos, programme and stream QR SVGs, README, license and source commit identifier. Inspect them and complete [QA.md](QA.md). Once the tag is pushed and a GitHub release exists, run `python3 scripts/release.py v4.0.0 --upload` to upload both files with `gh`; existing assets are not overwritten.
 
 For a later release, update a clean `production` checkout with the desired snapshot from `master` using `git diff --binary production master | git apply --index`, review the staged changes and make one commit. Tag that production commit; a tag on the development commit does not identify the squashed commit. Review and push deliberately; the helper does not create tags, branches or releases.

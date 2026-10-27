@@ -187,27 +187,28 @@ def days_and_events(program:dict, language:str)->str:
     ])
 
 
-def intro(language:str)->str:
-    """Approved Czech introduction and faithful English translation on cover."""
-    intro_cz=("Čaj u Mefista 4 je čtvrtý ročník mezinárodní multioborové konference zaměřené na výzkum okultismu a alternativních náboženských směrů.\n\n"
-     "Netradiční název konference odkazuje na divadelní drama Mefistofeles (1910) od Jiřího Mahena, v jehož památníku se konference již počtvrté koná.")
-    intro_en=("Tea at Mephisto’s 4 is the fourth edition of an international interdisciplinary conference focused on research into occultism and alternative religious traditions.\n\n"
-     "The conference’s unusual name refers to Mephistopheles (1910), a play by Jiří Mahen. The conference is being held for the fourth time at the memorial dedicated to him.")
-    data=intro_cz if language=='cz' else intro_en
-    return '\n\n\\par\n\n'.join(typeset(x, language) for x in data.split('\n\n'))
-
-
 def cover(language:str)->str:
-    """A5 logo, place, dates and conference description without editorial boilerplate."""
+    """A5 logo, title, dates and venue."""
     return '\n'.join([
         r'\thispagestyle{empty}\begin{center}\vspace*{5mm}',
         r'\makebox[\textwidth][c]{\includegraphics[width=130mm]{logo-'+language+r'}}\par',
         r'\vspace{4mm}{\displayfont\fontsize{16}{18}\selectfont\bfseries '+ ('Anotace přednášek' if language=='cz' else 'Lecture abstracts')+r'\par}',
         r'\vspace{1mm}{\sffamily\fontsize{9.2}{11}\selectfont 29. 10. – 1. 11. 2026\par}',
         r'{\sffamily\fontsize{9.1}{11}\selectfont Mahenův památník, Brno\par}',
-        r'\end{center}\vspace{4mm}',
-        r'{\fontsize{9.2}{11.4}\selectfont\justifying '+intro(language)+r'\par}',
-        r'\vfill\begin{center}{\sffamily\fontsize{8}{10}\selectfont\url{https://www.caj-u-mefista.cz/}}\end{center}\clearpage'
+        r'\end{center}\clearpage'
+    ])
+
+
+def stream(language:str)->str:
+    """Render the editable stream information on its own page."""
+    data=json.loads((ROOT/'data'/'stream.json').read_text(encoding='utf-8'))
+    url=data['url']
+    return '\n'.join([
+        r'\clearpage\thispagestyle{fancy}\vspace*{5mm}',
+        r'{\displayfont\fontsize{17}{19}\selectfont\bfseries '+typeset(data[language]['heading'], language)+r'\par}\divider\vspace{3mm}',
+        r'{\fontsize{10}{13}\selectfont '+typeset(data[language]['text'], language)+r'\par}\vspace{8mm}',
+        r'\begin{center}\href{'+url+r'}{\includegraphics[width=45mm]{stream-qr}}\par\vspace{5mm}',
+        r'{\sffamily\fontsize{9}{11}\selectfont\url{'+url+r'}\par}\end{center}'
     ])
 
 
@@ -240,6 +241,7 @@ def write_tex(lectures:list[Lecture],program:dict)->None:
             stamp=f"{day.day}. {day.month}. · {e['start']}" if language=='cz' else f"{day.day} {day.strftime('%b')} · {e['start']}"
             abstract=lecture.abstract_cz if language=='cz' else lecture.abstract_en
             parts.append('\\talk{' +tex(stamp)+'}{'+typeset(e[f'title_{language}'], language)+'}{'+typeset(localized_author(lecture.author, language), language)+'}{'+paragraphs(abstract, language)+'}')
+        parts.append(stream(language))
         parts.append(contacts(language))
         parts.append(r'\end{document}')
         (ROOT/'tex'/'generated'/f'{language}.tex').write_text('\n'.join(parts)+'\n',encoding='utf-8')

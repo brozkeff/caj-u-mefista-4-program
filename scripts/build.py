@@ -21,9 +21,9 @@ def prepare_qr() -> None:
         raise RuntimeError('inkscape missing; install it to convert the SVG QR codes')
     qr_dir = ROOT / 'build' / 'qr'
     qr_dir.mkdir(parents=True, exist_ok=True)
-    for lang in ('cz', 'en'):
-        subprocess.run(['inkscape', str(ROOT / 'assets' / f'program-qr-{lang}.svg'),
-                        '--export-type=pdf', f'--export-filename={qr_dir / f"program-qr-{lang}.pdf"}'],
+    for name in ('program-qr-cz', 'program-qr-en', 'stream-qr'):
+        subprocess.run(['inkscape', str(ROOT / 'assets' / f'{name}.svg'),
+                        '--export-type=pdf', f'--export-filename={qr_dir / f"{name}.pdf"}'],
                        check=True, capture_output=True, text=True)
 
 
@@ -53,7 +53,7 @@ def compile_tex(lang:str)->Path:
 
 
 def pad_before_contacts() -> int:
-    """Match edition lengths while preserving contacts on each final page.
+    """Match edition lengths while keeping stream and contacts as the final pages.
 
     Returns:
         Equalized number of A5 pages, guaranteed even for reversal/imposition.
@@ -67,9 +67,10 @@ def pad_before_contacts() -> int:
         deficit=expected-len(reader.pages)
         if deficit:
             w=PdfWriter()
-            for page in list(reader.pages)[:-1]:w.add_page(page)
+            for page in list(reader.pages)[:-2]:w.add_page(page)
             last=reader.pages[-1]
             for _ in range(deficit):w.add_blank_page(width=float(last.mediabox.width),height=float(last.mediabox.height))
+            w.add_page(reader.pages[-2])
             w.add_page(last)
             with paths[lang].open('wb') as target:w.write(target)
     return expected

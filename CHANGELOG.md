@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [4.0.3] - 2026-10-27
+
+### Added
+
+- Bilingual online stream page with a channel QR code.
+- Untimed exhibitions in the website and XML as untimed schedule extensions.
+
+### Changed
+
+- Simplified the cover and corrected exhibition artists and titles.
+
 ## [4.0.2] - 2026-10-27
 
 ### Changed
