@@ -26,9 +26,14 @@ jobs:
         run: make xml
       - name: Check schedule links
         run: node --test tests/schedule-links.cjs
-      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+      - name: Package Pages artifact
+        run: tar --dereference --hard-dereference --directory build/site -cf "$RUNNER_TEMP/artifact.tar" --exclude=.git --exclude=.github --exclude='.[^/]*' .
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
-          path: build/site
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
   deploy:
     if: github.ref == 'refs/heads/production'
@@ -42,4 +47,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
