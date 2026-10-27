@@ -1,6 +1,6 @@
 [project]
 name = "caj-u-mefista-4-booklet"
-version = "4.0.1"
+version = "4.0.2"
 requires-python = ">=3.11"
 dependencies = ["pypdf==5.9.0"]
 

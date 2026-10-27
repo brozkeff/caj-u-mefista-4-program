@@ -3,8 +3,8 @@
   "timezone": "Europe/Prague",
   "source": "https://www.caj-u-mefista.cz/program/ (snapshot 2026-10-27). This snapshot takes priority over later or cached website versions where they disagree; English titles from /program-1/ or translated when absent.",
   "urls": {
-    "cz": "https://www.caj-u-mefista.cz/program/",
-    "en": "https://www.caj-u-mefista.cz/program-1/"
+    "cz": "https://brozkeff.github.io/caj-u-mefista-4-program/",
+    "en": "https://brozkeff.github.io/caj-u-mefista-4-program/"
   },
   "venue": "Mahenův památník, Mahenova 8, Brno, Czechia",
   "events": [
