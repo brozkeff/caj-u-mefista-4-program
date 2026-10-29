@@ -81,7 +81,7 @@ def package(tag: str, commit: str) -> tuple[Path, Path]:
     expected = {*(f'{A5_PREFIX}_{lang.upper()}.pdf' for lang in LANGUAGES), READER_NAME, DUPLEX_NAME}
     if {p.name for p in pdfs} != expected:
         raise RuntimeError(f'expected exactly the four release PDFs; found {sorted(p.name for p in pdfs)}')
-    site_files = ('index.html', 'style.css', 'schedule.js', 'logo-cz.jpg', 'logo-en.jpg',
+    site_files = ('index.html', 'style.css', 'schedule.js', 'streams.js', 'logo-cz.jpg', 'logo-en.jpg',
                   'schedule-cz.xml', 'schedule-en.xml')
     asset_files = ('logo-cz.jpg', 'logo-en.jpg', 'program-qr-cz.svg', 'program-qr-en.svg', 'stream-qr.svg')
     with ZipFile(archive, 'w', ZIP_DEFLATED) as bundle:
@@ -105,11 +105,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('tag', help='Existing release tag, for example v4.0.0')
     parser.add_argument('--upload', action='store_true', help='Upload to an existing GitHub release')
+    parser.add_argument('--reuse-pdf', action='store_true', help='Reuse the four existing build/pdf files instead of rendering them')
     args = parser.parse_args()
     if not re.fullmatch(r'v\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?', args.tag):
         parser.error('tag must be a version such as v4.0.0')
     commit = checked_commit(args.tag, args.upload)
-    run('make', 'build', f'PYTHON={sys.executable}')
+    run('make', 'sources' if args.reuse_pdf else 'build', f'PYTHON={sys.executable}')
     run('make', 'verify', f'PYTHON={sys.executable}')
     run('make', 'test', f'PYTHON={sys.executable}')
     archive, checksum = package(args.tag, commit)

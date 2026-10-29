@@ -52,6 +52,8 @@ def create(program: dict, lectures: list[Lecture], lang: str) -> bytes:
     Returns:
         UTF-8 XML bytes, including reviewed abstracts and stable published IDs.
     """
+    streams = json.loads((ROOT / 'data' / 'streams.json').read_text(encoding='utf-8'))
+    stream_by_event = {event_id: stream['url'] for stream in streams for event_id in stream['events']}
     lecture_by_id = {lecture.event['id']: lecture for lecture in lectures}
     root = ET.Element('schedule')
     conference = ET.SubElement(root, 'conference')
@@ -90,7 +92,13 @@ def create(program: dict, lectures: list[Lecture], lang: str) -> bytes:
                 for key, value in elements.items():
                     ET.SubElement(event, key).text = value
                 links = ET.SubElement(event, 'links')
-                ET.SubElement(links, 'link', {'href': program['urls'][lang]}).text = 'Live programme'
+                ET.SubElement(links, 'link', {'href': program['urls'][lang]}).text = (
+                    'Online program' if lang == 'cz' else 'Live programme'
+                )
+                if item['id'] in stream_by_event:
+                    ET.SubElement(links, 'link', {'href': stream_by_event[item['id']]}).text = (
+                        'Online stream' if lang == 'en' else 'Online přenos'
+                    )
                 people = ET.SubElement(event, 'persons')
                 for person_index, person in enumerate(item['persons'], 1):
                     ET.SubElement(people, 'person', {'id': str(100000 + event_index * 10 + person_index)}).text = person

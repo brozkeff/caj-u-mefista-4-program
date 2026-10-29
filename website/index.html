@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Čaj u Mefista 4 — program / schedule</title>
   <link rel="stylesheet" href="style.css">
+  <script src="streams.js" defer></script>
   <script src="schedule.js" defer></script>
 </head>
 <body>
@@ -22,6 +23,10 @@
       <button type="button" data-language="en" aria-pressed="false">English</button>
     </nav>
     <p><a id="official-program" href="https://www.caj-u-mefista.cz/program/">Oficiální program na webu konference ↗</a></p>
+    <section class="streams" aria-labelledby="streams-heading">
+      <h2 id="streams-heading">Online přenosy</h2>
+      <div id="streams" class="stream-links"></div>
+    </section>
     <p id="status" role="status">Načítám program…</p>
     <div id="schedule"></div>
     <section class="apps" aria-labelledby="apps-heading">

@@ -29,3 +29,9 @@ button:focus-visible, a:focus-visible { outline: 3px solid #bc893b; outline-offs
 footer { border-top: 1px solid var(--line); padding: 1.5rem 0 3rem; }
 a { color: var(--wine); }
 @media (max-width: 480px) { .event { grid-template-columns: 3.8rem 1fr; gap: .5rem; } }
+
+.streams { margin: 2rem 0; }
+.stream-links { display: flex; flex-wrap: wrap; gap: .6rem; }
+.stream-links a { font: 600 .9rem/1.4 system-ui, sans-serif; border: 1px solid #a3938e; border-radius: 3px; padding: .65rem 1rem; background: #eee8e2; color: #554944; text-decoration: none; }
+.stream-links a.active { background: var(--wine); border-color: var(--wine); color: white; }
+.stream-links small { display: block; font-weight: 400; }

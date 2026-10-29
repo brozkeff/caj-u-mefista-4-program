@@ -38,7 +38,7 @@ class ReleaseTests(unittest.TestCase):
         """Package all required artifacts and write a verifiable checksum."""
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            site_names = ('index.html', 'style.css', 'schedule.js', 'logo-cz.jpg', 'logo-en.jpg',
+            site_names = ('index.html', 'style.css', 'schedule.js', 'streams.js', 'logo-cz.jpg', 'logo-en.jpg',
                           'schedule-cz.xml', 'schedule-en.xml')
             asset_names = ('logo-cz.jpg', 'logo-en.jpg', 'program-qr-cz.svg', 'program-qr-en.svg', 'stream-qr.svg')
             pdf_names = ('Caj_u_Mefista_4_A5_CZ.pdf', 'Caj_u_Mefista_4_A5_EN.pdf',

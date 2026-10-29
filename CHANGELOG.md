@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [4.1.1] - 2026-10-29
+
+### Added
+
+- Added five timed YouTube stream links to the website and streamed events in the Pentabarf schedules.
+
+### Changed
+
+- Regenerated the brochure with unchanged content and refreshed the publication regression baseline.
+- Clarified the Prague time zone (CET, GMT+1) in the English website.
+- Localized the programme link label in the Czech Pentabarf schedule.
+
 ## [4.1.0] - 2026-10-28
 
 ### Changed

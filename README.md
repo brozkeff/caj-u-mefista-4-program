@@ -9,7 +9,8 @@ This project generates bilingual booklets, Pentabarf schedules and an [interacti
 - `data/abstracts_review.xlsx`: reviewed author and abstract fields in `Přednášky tisk`; preserve the text as supplied.
 - `data/program.json`: authoritative timetable, titles, participants and Pentabarf conference metadata. See [PROVENANCE.md](PROVENANCE.md) for sources and a known website discrepancy.
 - `data/booklet.json`: bilingual cover, programme headings, column split and contact details.
-- `data/stream.json`: bilingual stream text and channel URL.
+- `data/stream.json`: bilingual printed stream text and channel URL.
+- `data/streams.json`: online stream windows, links and explicitly streamed programme events.
 - `scripts/config.py`: shared output names and language codes. Preserve the event GUID prefix to keep published event IDs stable.
 - `assets/`: supplied logos and programme QR codes, plus the stream QR code. If `data/stream.json` changes, regenerate `assets/stream-qr.svg` with `qrencode -t SVG` using the updated URL. Generated outputs are ignored by Git.
 
@@ -32,7 +33,7 @@ make verify PYTHON=.venv/bin/python
 make test PYTHON=.venv/bin/python
 ```
 
-Alternatively run `uv sync` and use `PYTHON='uv run python'`. Run `make build` before `make test`; the permanent tests check XML well-formedness and schedule structure, while regression checks compare generated publication text and schedules against the reviewed v4.0.4 baseline; update the fixture deliberately when the published content changes. The four PDFs go to `build/pdf/`; the preserved cloud-rendered files in `pdf/` are never overwritten. `make sources` skips PDF rendering; `make xml` regenerates schedules and the website. Before release, follow [QA.md](QA.md); a physical short-edge-duplex proof is optional.
+Alternatively run `uv sync` and use `PYTHON='uv run python'`. Run `make build` before `make test`; the permanent tests check XML well-formedness and schedule structure, while regression checks compare generated publication text and schedules against the v4.1.1 baseline (preserved brochure PDFs and current schedules); update the fixture deliberately when the published content changes. The four PDFs go to `build/pdf/`; the preserved cloud-rendered files in `pdf/` are never overwritten. `make sources` skips PDF rendering; `make xml` regenerates schedules and the website. Before release, follow [QA.md](QA.md); a physical short-edge-duplex proof is optional.
 
 ## Update the programme
 
@@ -56,6 +57,6 @@ Prepare a clean `production` commit and an annotated tag on that exact commit; c
 python3 scripts/release.py v4.0.0
 ```
 
-The helper checks the clean checkout and tag, rebuilds, verifies and runs the regression tests, then creates a ZIP and SHA-256 file in `build/release/`. The ZIP contains the four PDFs, website and XML, logos, programme and stream QR SVGs, README, license and source commit identifier. Inspect them and complete [QA.md](QA.md). Once the tag is pushed and a GitHub release exists, run `python3 scripts/release.py v4.0.0 --upload` to upload both files with `gh`; existing assets are not overwritten.
+The helper checks the clean checkout and tag, rebuilds, verifies and runs the regression tests, then creates a ZIP and SHA-256 file in `build/release/`. The ZIP contains the four PDFs, website and XML, logos, programme and stream QR SVGs, README, license and source commit identifier. To reuse existing brochure PDFs for a website-only patch, place the four reviewed PDFs in `build/pdf/` and pass `--reuse-pdf`; the helper regenerates the site and schedules and still runs verification and tests. Inspect them and complete [QA.md](QA.md). Once the tag is pushed and a GitHub release exists, run `python3 scripts/release.py v4.0.0 --upload` to upload both files with `gh`; existing assets are not overwritten.
 
 For a later release, update a clean `production` checkout with the desired snapshot from `master` using `git diff --binary production master | git apply --index`, review the staged changes and make one commit. Tag that production commit; a tag on the development commit does not identify the squashed commit. Review and push deliberately; the helper does not create tags, branches or releases.

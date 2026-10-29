@@ -1,4 +1,4 @@
-"""Guard v4.0.4 publication content while allowing implementation refactoring."""
+"""Guard v4.1.1 publication content while allowing implementation refactoring."""
 
 import hashlib
 import json
@@ -8,7 +8,7 @@ from pathlib import Path
 from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parents[1]
-BASELINE = json.loads((ROOT / 'tests/fixtures/publication-v404.json').read_text())
+BASELINE = json.loads((ROOT / 'tests/fixtures/publication-v411.json').read_text())
 
 
 def digest(data: bytes) -> str:
